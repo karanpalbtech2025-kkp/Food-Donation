@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodShare — Food Donation & Distribution</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#" data-page="overview"><span class="brand-icon">🥗</span><span><b>FoodShare</b><small>COMMUNITY NETWORK</small></span></a>
+    <div class="workspace"><span class="workspace-dot"></span><span>Community workspace</span><span class="chevron">⌄</span></div>
+    <p class="nav-label">WORKSPACE</p>
+    <nav class="nav">
+      <button class="nav-link active" data-page="overview"><span>◫</span> Overview</button>
+      <button class="nav-link" data-page="donations"><span>♡</span> Food donations <em id="donationNavCount">0</em></button>
+      <button class="nav-link" data-page="requests"><span>▤</span> Food requests</button>
+      <button class="nav-link" data-page="allocations"><span>⇄</span> Allocations</button>
+      <button class="nav-link" data-page="categories"><span>▦</span> Food categories</button>
+      <p class="nav-label nav-spaced">MANAGEMENT</p>
+      <button class="nav-link" data-page="users"><span>♙</span> People</button>
+      <button class="nav-link" data-page="reports"><span>▥</span> Impact report</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="help-card"><div class="help-icon">✳</div><b>Small acts, big impact.</b><p>Every meal shared is a little more hope in the world.</p><a href="#" data-page="donations">Make a difference ↗</a></div>
+      <div class="profile"><div class="avatar">AS</div><div class="profile-text"><b id="profileName">Aryan Singh</b><small id="profileRole">Administrator</small></div><button id="profileMenu" aria-label="Switch role">•••</button></div>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><button class="mobile-menu" id="mobileMenu">☰</button><div class="breadcrumb">Workspace <span>/</span> <b id="crumb">Overview</b></div><div class="top-actions"><span class="today" id="today"></span><button class="icon-btn" title="Notifications" id="notifications">♧<i></i></button><button class="top-avatar">AS</button></div></header>
+    <div class="page-wrap">
+      <section id="page-overview" class="page active">
+        <div class="welcome-row"><div><div class="eyebrow"><span class="pulse"></span> YOUR COMMUNITY AT A GLANCE</div><h1>Good morning, Aryan <span>✦</span></h1><p class="muted">Here's what's happening across your food-sharing community.</p></div><button class="btn btn-primary" data-page="donations">＋ Record a donation</button></div>
+        <div class="hero"><div class="hero-copy"><div class="hero-tag">✦ &nbsp; FOOD WITH PURPOSE</div><h2>Good food deserves<br>another <i>chance.</i></h2><p>Connect surplus food with people who need it most. Every donation makes a difference.</p><button class="btn btn-light" data-page="donations">Explore donations <span>↗</span></button></div><div class="hero-art"><div class="sun"></div><div class="plate"><span>🥗</span></div><div class="floating-card"><span class="float-icon">♥</span><div><b>One meal at a time</b><small>Building a hunger-free community</small></div></div><div class="hero-leaf leaf-one">✦</div><div class="hero-leaf leaf-two">❋</div></div></div>
+        <div class="section-heading"><div><h2>Community impact</h2><p class="muted">A little progress goes a long way.</p></div><button class="text-button" data-page="reports">View report ↗</button></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon green">♡</span><span class="stat-caption">ALL TIME</span></div><div class="stat-value" id="statDonations">0</div><div class="stat-label">Food donations</div><div class="stat-foot"><span class="up">↗ Community effort</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon orange">♧</span><span class="stat-caption">ALL TIME</span></div><div class="stat-value" id="statMeals">0</div><div class="stat-label">Estimated meals shared</div><div class="stat-foot">Every meal counts</div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon blue">⇄</span><span class="stat-caption">FULFILLED</span></div><div class="stat-value" id="statAllocations">0</div><div class="stat-label">Successful allocations</div><div class="stat-foot">Food reaching communities</div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon purple">♙</span><span class="stat-caption">NETWORK</span></div><div class="stat-value" id="statPeople">0</div><div class="stat-label">Community members</div><div class="stat-foot">Donors & volunteers</div></article>
+        </div>
+        <div class="content-grid"><section class="panel"><div class="panel-heading"><div><h3>Recent donations</h3><p>Latest food added to the network</p></div><button class="text-button" data-page="donations">View all →</button></div><div id="recentDonations" class="recent-list"></div></section>
+        <section class="panel needs-panel"><div class="panel-heading"><div><h3>Needs attention</h3><p>Help your community move forward</p></div><span class="mini-spark">✳</span></div><div id="attentionList"></div><div class="need-note"><span>✦</span><p><b>Good things happen together.</b><br>Approve requests and connect donations to local needs.</p></div></section></div>
+        <div class="bottom-note"><span>🌱</span><span><b>You're part of the solution.</b> Thank you for helping build a community where good food never goes to waste.</span><button data-page="reports">See your impact →</button></div>
+      </section>
+      <section id="page-donations" class="page">
+        <div class="page-title-row"><div><div class="eyebrow">SHARE WHAT YOU CAN</div><h1>Food donations</h1><p class="muted">Keep track of surplus food and help it find a new home.</p></div><button class="btn btn-primary" id="newDonation">＋ Add donation</button></div>
+        <div class="toolbar"><label class="searchbox">⌕ <input id="donationSearch" placeholder="Search food, donor or location..."></label><select id="donationFilter"><option value="All">All statuses</option><option>Pending</option><option>Approved</option><option>Rejected</option></select></div>
+        <div class="panel table-panel"><div class="table-scroll"><table><thead><tr><th>FOOD ITEM</th><th>DONOR</th><th>QUANTITY</th><th>LOCATION</th><th>DATE</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody id="donationsTable"></tbody></table></div><div class="empty-state hidden" id="donationsEmpty">No donations found. Add your first donation to get started.</div></div>
+      </section>
+      <section id="page-requests" class="page">
+        <div class="page-title-row"><div><div class="eyebrow">COMMUNITY NEEDS</div><h1>Food requests</h1><p class="muted">Review requests from NGOs and community volunteers.</p></div><button class="btn btn-primary" id="newRequest">＋ Submit request</button></div>
+        <div class="toolbar"><label class="searchbox">⌕ <input id="requestSearch" placeholder="Search category or location..."></label><select id="requestFilter"><option value="All">All statuses</option><option>Pending</option><option>Approved</option><option>Rejected</option></select></div>
+        <div class="request-grid" id="requestsGrid"></div>
+      </section>
+      <section id="page-allocations" class="page">
+        <div class="page-title-row"><div><div class="eyebrow">FROM SURPLUS TO SUPPORT</div><h1>Food allocations</h1><p class="muted">Match available donations with approved community requests.</p></div><button class="btn btn-primary" id="newAllocation">＋ New allocation</button></div>
+        <div class="info-banner"><span>✦</span><div><b>Make every donation count</b><p>Allocate approved donations to approved requests so food can reach the people who need it.</p></div></div>
+        <div class="panel table-panel"><div class="table-scroll"><table><thead><tr><th>FOOD ITEM</th><th>DESTINATION</th><th>QUANTITY</th><th>ALLOCATED ON</th><th>STATUS</th></tr></thead><tbody id="allocationsTable"></tbody></table></div><div class="empty-state hidden" id="allocationsEmpty">No allocations yet. Create one to connect food with a community need.</div></div>
+      </section>
+      <section id="page-categories" class="page">
+        <div class="page-title-row"><div><div class="eyebrow">ORGANISE YOUR INVENTORY</div><h1>Food categories</h1><p class="muted">Organise food types and keep handling guidance close at hand.</p></div><button class="btn btn-primary" id="newCategory">＋ Add category</button></div>
+        <div class="category-grid" id="categoriesGrid"></div>
+      </section>
+      <section id="page-users" class="page">
+        <div class="page-title-row"><div><div class="eyebrow">THE PEOPLE BEHIND THE IMPACT</div><h1>Community members</h1><p class="muted">Meet the people making food sharing happen.</p></div><button class="btn btn-primary" id="newUser">＋ Add member</button></div>
+        <div class="toolbar"><label class="searchbox">⌕ <input id="userSearch" placeholder="Search name, email or role..."></label><select id="userFilter"><option value="All">All roles</option><option>Donor</option><option>NGO Volunteer</option><option>Admin</option></select></div>
+        <div class="panel table-panel"><div class="table-scroll"><table><thead><tr><th>MEMBER</th><th>EMAIL</th><th>PHONE</th><th>ROLE</th><th>JOINED</th><th>ACTIONS</th></tr></thead><tbody id="usersTable"></tbody></table></div><div class="empty-state hidden" id="usersEmpty">No members found.</div></div>
+      </section>
+      <section id="page-reports" class="page">
+        <div class="eyebrow">THE DIFFERENCE WE MAKE</div><h1>Community impact</h1><p class="muted page-intro">A snapshot of your food-sharing community's progress.</p>
+        <div class="stats-grid report-stats"><article class="stat-card"><div class="stat-icon green">♡</div><div class="stat-value" id="reportDonations">0</div><div class="stat-label">Donations recorded</div></article><article class="stat-card"><div class="stat-icon orange">♧</div><div class="stat-value" id="reportMeals">0</div><div class="stat-label">Estimated meals</div></article><article class="stat-card"><div class="stat-icon blue">⇄</div><div class="stat-value" id="reportAllocations">0</div><div class="stat-label">Allocations completed</div></article><article class="stat-card"><div class="stat-icon purple">♙</div><div class="stat-value" id="reportPeople">0</div><div class="stat-label">Community members</div></article></div>
+        <div class="panel impact-panel"><div><span class="impact-emoji">🌎</span><h2>Food is too good to waste.</h2><p>Every item listed is a chance to turn surplus into support. Keep adding donations, reviewing requests, and connecting the two.</p><button class="btn btn-primary" data-page="donations">Continue the good work →</button></div><div class="impact-art">🥕<span>🍞</span><i>🥦</i><b>🍎</b></div></div>
+      </section>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<div class="modal-backdrop hidden" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><div class="eyebrow">FOODSHARE WORKSPACE</div><h2 id="modalTitle">Add record</h2></div><button class="close-btn" id="closeModal" aria-label="Close">×</button></div><form id="recordForm"><div id="modalFields" class="modal-fields"></div><div class="modal-actions"><button type="button" class="btn btn-outline" id="cancelModal">Cancel</button><button type="submit" class="btn btn-primary" id="saveRecord">Save record →</button></div></form></div></div>
+<script src="app.js"></script>
+</body></html>
